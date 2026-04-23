@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Sales Dashboard</title>
 
     <style>
         * {
@@ -46,7 +46,7 @@
             background: #334155;
         }
 
-        /* Main Content */
+        /* Main */
         .main {
             margin-left: 250px;
             padding: 20px;
@@ -59,6 +59,20 @@
             margin-bottom: 20px;
         }
 
+        .logout-btn {
+            padding: 8px 15px;
+            background: #1e293b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background: #334155;
+        }
+
+        /* Cards */
         .cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -76,22 +90,18 @@
             margin-bottom: 10px;
         }
 
-        .chart {
-            margin-top: 30px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
         /* Table */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 30px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         table th, table td {
-            padding: 10px;
+            padding: 12px;
             border-bottom: 1px solid #ddd;
         }
 
@@ -99,6 +109,7 @@
             background: #1e293b;
             color: white;
         }
+
     </style>
 </head>
 
@@ -106,73 +117,79 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <h2>My Dashboard</h2>
+        <h2>Sales Panel</h2>
         <ul>
-            <li>Home</li>
-            <li>Analytics</li>
-            <li>Users</li>
-            <li>Settings</li>
+            <li>Dashboard</li>
+            <li>Orders</li>
+            <li>Customers</li>
+            <li>Reports</li>
         </ul>
     </div>
 
-    <!-- Main Content -->
+    <!-- Main -->
     <div class="main">
 
         <div class="header">
-            <h1>Dashboard</h1>
-           <a href="{{ url_for('login') }}"><button>Login</button></a>
+            <h1>Sales Dashboard</h1>
+            <a href="{{ url_for('logout') }}">
+                <button class="logout-btn">Logout</button>
+            </a>
         </div>
 
         <!-- Cards -->
         <div class="cards">
             <div class="card">
-                <h3>Total Users</h3>
-                <p>1,245</p>
+                <h3>Total Sales</h3>
+                <p>$12,500</p>
             </div>
 
             <div class="card">
-                <h3>Revenue</h3>
-                <p>$8,450</p>
+                <h3>Orders Today</h3>
+                <p>85</p>
             </div>
 
             <div class="card">
-                <h3>Orders</h3>
-                <p>320</p>
+                <h3>New Customers</h3>
+                <p>25</p>
             </div>
 
             <div class="card">
-                <h3>Growth</h3>
-                <p>+12%</p>
+                <h3>Revenue Growth</h3>
+                <p>+18%</p>
             </div>
-        </div>
-
-        <!-- Chart Placeholder -->
-        <div class="chart">
-            <h3>Analytics (Add Chart.js here)</h3>
-            <canvas id="myChart"></canvas>
         </div>
 
         <!-- Table -->
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Email</th>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
                     <th>Status</th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr>
+                    <td>#1001</td>
                     <td>John Doe</td>
-                    <td>john@example.com</td>
-                    <td>Active</td>
+                    <td>$120</td>
+                    <td>Completed</td>
                 </tr>
 
                 <tr>
+                    <td>#1002</td>
                     <td>Jane Smith</td>
-                    <td>jane@example.com</td>
-                    <td>Inactive</td>
+                    <td>$75</td>
+                    <td>Pending</td>
+                </tr>
+
+                <tr>
+                    <td>#1003</td>
+                    <td>Alex Brown</td>
+                    <td>$200</td>
+                    <td>Completed</td>
                 </tr>
             </tbody>
         </table>
